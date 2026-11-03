@@ -1,12 +1,12 @@
 # AI Operating System for Teams 🧠⚙️
 
-An AI-native collaborative workspace designed to intelligently manage projects, tasks, meetings, and code activity. Unlike traditional task trackers (like Jira or Trello), this platform acts as an active AI project manager—understanding team context, detecting blockers in real-time, and automating project planning.
+An early prototype of an AI-native collaborative workspace for managing projects, tasks, meetings, and code activity. The long-term goal is an active AI project manager that understands team context, detects blockers, and helps automate project planning.
 
 ## 🚀 The Vision
 
-Modern teams lose hours syncing context across chats, docs, and task boards. This platform centralizes that data and uses Large Language Models (LLMs) and Vector Search to constantly monitor the workspace. If a developer mentions a delay in chat, the AI instantly flags downstream dependent tasks as "At Risk" and notifies the relevant stakeholders.
+Modern teams lose hours syncing context across chats, docs, and task boards. The project aims to bring that information together and use Large Language Models (LLMs) and vector search to identify blockers and keep teams aligned. These AI capabilities are planned and are not implemented in the current prototype.
 
-## ✨ Core Features
+## ✨ Planned Features
 
 ### 1. AI-Driven Project Planning
 * **Brief-to-Plan Decomposition:** Upload a raw product brief (PDF/Markdown), and the AI will automatically break it down into epics, actionable tasks, and assign dependencies.
@@ -25,27 +25,26 @@ Modern teams lose hours syncing context across chats, docs, and task boards. Thi
 * **Strict Audit Trail:** 100% of actions (both human and AI) are logged for accountability.
 * **Multi-Tenant Architecture:** Total data isolation between different workspaces.
 
-## 🛠️ Technology Stack
+## 🛠️ Current Technology Stack
 
 **Frontend:**
-* React.js & TypeScript
-* Tailwind CSS (for styling)
-* Socket.io-client (for real-time updates)
+* React 19 with JavaScript
+* Vite
+* CSS
+* Lucide React icons
 
 **Backend:**
-* Node.js & Express.js
-* Socket.io (WebSocket server)
-* BullMQ (Redis-based queue for heavy background tasks)
+* Node.js and Express 5
+* Mongoose for MongoDB access
+* Helmet and CORS middleware
+* dotenv for environment configuration
 
-**Database & AI:**
-* MongoDB (Primary transactional database)
-* Redis (Caching and task queues)
-* Pinecone / MongoDB Atlas Vector Search (Vector database for RAG)
-* OpenAI / Gemini APIs (LLM orchestration)
+**Database:**
+* MongoDB
 
-## 📊 Performance Targets
+## 📊 Future Performance Goals
 
-This system is engineered to meet professional-grade SaaS benchmarks:
+These are aspirational targets; the current prototype has not been benchmarked against them:
 * **Scale:** Capable of indexing and searching 100,000+ workspace objects (tasks, messages, docs).
 * **Speed:** Semantic search queries return results in **< 1 second**.
 * **Reliability:** Background LLM operations are decoupled via queues to ensure 0 UI freezing.
@@ -53,10 +52,8 @@ This system is engineered to meet professional-grade SaaS benchmarks:
 ## 💻 Getting Started
 
 ### Prerequisites
-* Node.js (v18+)
+* Node.js 20.19+ or 22.12+
 * MongoDB instance (local or Atlas)
-* Redis instance
-* API Keys for OpenAI/Gemini and your Vector DB
 
 ### Installation
 
@@ -66,36 +63,33 @@ This system is engineered to meet professional-grade SaaS benchmarks:
    cd Team-OS
    ```
 
-2. **Install dependencies:**
+2. **Configure the server:**
+   * Create `server/.env` and set your MongoDB connection string:
+     ```env
+     MONGODB_URI=mongodb://127.0.0.1:27017/team_os
+     ```
+   * For MongoDB Atlas, use your Atlas connection string instead.
+
+3. **Install dependencies and run the server:**
    ```bash
-   # Install backend dependencies
-   cd backend && npm install
-   
-   # Install frontend dependencies
-   cd ../frontend && npm install
-   ```
-
-3. **Environment Setup:**
-   * Duplicate `.env.example` to `.env` in both the `frontend` and `backend` directories.
-   * Add your Database URIs, JWT secrets, and AI API keys.
-
-4. **Run the Application:**
-   ```bash
-   # Start the Redis server (if running locally)
-   redis-server
-
-   # Run backend (from /backend)
+   cd server
+   npm install
    npm run dev
-
-   # Run frontend (from /frontend)
-   npm start
    ```
 
-## 🎥 Killer Demo Flow
-When presenting this project, follow this flow to showcase the AI's capabilities:
-1. Create a new project and upload a messy text brief. Watch the AI auto-generate the task board.
-2. Jump into the workspace chat and type, *"I'm stuck on the database migration, it's going to take 2 extra days."*
-3. Navigate back to the project board and show how the AI automatically flagged the downstream "API Integration" task with a warning regarding the database delay.
+4. **Run the client:** Open a second terminal in the repository root and run:
+   ```bash
+   cd client
+   npm install
+   npm run dev
+   ```
+
+## 🎥 Current Prototype Demo
+1. Add a task from the dashboard.
+2. Move tasks between Todo, In Progress, and Done.
+3. View the task counts update in the dashboard.
+
+AI planning, chat-based blocker detection, and automated risk updates are planned features and are not part of the current demo.
 
 ---
 *Built by [Your Name/Handle] - Combining full-stack engineering with applied AI.*

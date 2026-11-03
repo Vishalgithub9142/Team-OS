@@ -63,7 +63,7 @@ This system is engineered to meet professional-grade SaaS benchmarks:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Vishalgithub9142/Team-OS.git
-   cd ai-ops-workspace
+   cd Team-OS
    ```
 
 2. **Install dependencies:**
